@@ -29,5 +29,10 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### Angular FE Dependencies ###
+frontend/clipcraze-ui/node
+frontend/clipcraze-ui/node_modules
+frontend/clipcraze-ui/dist
+
 ### VS Code ###
 .vscode/
