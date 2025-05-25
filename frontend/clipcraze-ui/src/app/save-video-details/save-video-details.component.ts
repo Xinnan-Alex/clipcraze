@@ -28,12 +28,18 @@ export class SaveVideoDetailsComponent {
   videoStatus: FormControl = new FormControl('')
   selectedFileName = ""
   videoId = ""
+  videoURL = ""
 
   constructor(private activatedRoute: ActivatedRoute,
               private videoService: VideoService,
               private matSnackbar: MatSnackBar,
   ) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
+    this.videoService.getVideoDetails(this.videoId).subscribe(
+      data => {
+        this.videoURL = data.videoURL;
+      }
+    );
     this.saveVideoDetailsForm = new FormGroup({
       title: this.title,
       description: this.description,

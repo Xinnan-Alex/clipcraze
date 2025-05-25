@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UploadVideoResponse} from './upload-video/UploadVideoResponse';
+import {VideoDTO} from './video-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class VideoService {
     return this.httpClient.post("http://localhost:8080/api/v1/videos/thumbnail", formData, {
       responseType: "text"
     })
+  }
+
+  getVideoDetails(videoId: string): Observable<VideoDTO> {
+    return this.httpClient.get<VideoDTO>(`http://localhost:8080/api/v1/videos/${videoId}`)
   }
 }
